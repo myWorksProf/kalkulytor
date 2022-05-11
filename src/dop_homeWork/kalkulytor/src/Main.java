@@ -2,16 +2,14 @@ import java.util.Scanner;
 
 import static java.lang.System.*;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
-        boolean replay = true;
-        while (replay) {
-            calculations();
-        }
+        calculations();
     }
 
     public static void calculations() {
+        boolean replay = true;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите первое число = ");
         int a = scanner.nextInt();
@@ -23,29 +21,29 @@ public class main {
         out.println("4. Деление ( / )");
         out.println("5. Остаток от деления ( % )");
         out.print("Введите номер операции или знак операции - ");
-        String operation = scanner.next();
-        int result;
-        if (operation == 1) {
+        char operation = scanner.next().charAt(0);
+        int result = 0;
+        if (operation == 1 || operation == '+') {
             result = a + b;
-        } else if (operation == 2) {
+        } else if (operation == 2 || operation == '-') {
             result = a - b;
-        } else if (operation == 3) {
+        } else if (operation == 3 || operation == '*') {
             result = a * b;
-        } else if (operation == 4) {
+        } else if (operation == 4 || operation == '/') {
             result = a / b;
-        } else {
+        } else if (operation == 5 || operation == '%') {
             result = a % b;
         }
 
-        System.out.println("Результат = " + result);
+        System.out.println(result);
+        System.out.print("Проведем еще вычесления?  y/n - ");
+        char otvet = scanner.next().charAt(0);
+        if (otvet == 'n') {
+            replay = false;
+        }
+        while (replay) {
+            calculations();
 
-    }
-            System.out.print("Проведем еще вычесления?  y/n - ");
-    String otvet = scanner.next();
-            if(otvet.equals("n"))
-
-    {
-        replay = false;
-        break;
+        }
     }
 }
